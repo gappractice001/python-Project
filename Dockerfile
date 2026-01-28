@@ -1,4 +1,6 @@
 FROM python:3.12-slim
+
+# Copy single file explicitly
+COPY src/main.py /app/main.py
 WORKDIR /app
-COPY . .                    # Copies entire project
-CMD ["python", "src/main.py"]  # Runs from src/
+CMD ["python", "main.py"]
