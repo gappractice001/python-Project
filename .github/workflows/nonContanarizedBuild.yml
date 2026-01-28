@@ -17,11 +17,11 @@ jobs:
      
      - name: .py build                            
        run: |
-        python -m py_compile main.py          # Byte-compiles .py → .pyc (optional)
+        python -m py_compile src/main.py          # Byte-compiles .py → .pyc (optional)
         echo "Python build successful"
 
      - name: Run and Test 
-       run: python main.py
+       run: python src/main.py
      
      - name: publish artifact
        uses: actions/upload-artifact@v6.0.0
