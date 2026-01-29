@@ -18,7 +18,7 @@ jobs:
      
      - name: .py build                             # Optional for py to build, but for docker, build happen automatically in python main.py
        run: |
-        pthon -m build                      
+        python -m build                      
         echo "Python build successful"
 
      - name: Run and Test 
