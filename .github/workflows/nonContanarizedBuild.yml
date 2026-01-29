@@ -16,21 +16,22 @@ jobs:
         python-version: '3.11'
         run: python -m pip install            # installing dependencies
      
-     - name: .py build                             # Optional for py to build, but for docker, build happen automatically in python main.py
-       run: |                                                 # Byte-compiles .py → .pyc 
-        python -m py_compile src/main.py                               
-        echo "Python build successful"
-
+                                                                                                                                
      - name: Run and Test 
        run: python src/main.py
 
-     - run: mkdir -p staging
-     
-     - name: publish artifact
-       uses: actions/upload-artifact@v6.0.0
+
+     - name: Run Python script
+       run: |
+          mkdir -p staging
+          python src/main.py > staging/output.txt
+
+     - name: Upload artifact
+       uses: actions/upload-artifact@v4
        with:
-        name: Package
-        path: staging
+          name: python-output
+          path: staging/
+
        
   
   
