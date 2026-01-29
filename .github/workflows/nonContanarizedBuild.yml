@@ -13,21 +13,23 @@ jobs:
      - name: setup/install python dependiencies
        uses: actions/setup-python@v6.2.0
        with:
+        python-version: '3.11'
         run: python -m pip install            # installing dependencies
      
-     - name: .py build                            
+     - name: .py build                             # Optional for py to build, but for docker, build happen automatically in python main.py
        run: |
-        python -m py_compile src/main.py          # Byte-compiles .py → .pyc (optional)
+        pthon -m build                      
         echo "Python build successful"
 
      - name: Run and Test 
        run: python src/main.py
+
+     - run: mkdir -p staging
      
      - name: publish artifact
        uses: actions/upload-artifact@v6.0.0
        with:
         name: Package
-        mkdir: staging
         path: staging
        
   
